@@ -23,12 +23,20 @@ pipeline {
         }
 	// Build
 	stage("Build"){
-		sh "docker build -t my-app  ."
+		steps {
+                	sh "docker build -t my-app  ." 
+            	}
+
+		
 	}
 
 	//deploy
 	stage("Deploy on Docker"){
-		sh "docker run my-app"
+		steps {
+                	sh "docker run my-app"
+            	}
+
+		
 	}
     }
 }

@@ -21,7 +21,13 @@ pipeline {
                 }
             }
         }
-	
+	stage("version Docker"){
+		steps {
+                	sh 'docker -v'
+            	}
+
+		
+	}
 	stage("Build image docker"){
 		steps {
                 	sh 'docker build -t my-app  .'

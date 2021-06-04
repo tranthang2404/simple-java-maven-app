@@ -21,19 +21,19 @@ pipeline {
                 }
             }
         }
-	// Build
-	stage("Build"){
+	
+	stage("Build image docker"){
 		steps {
-                	sh "docker build -t my-app  ." 
+                	sh 'docker build -t my-app  .'
             	}
 
 		
 	}
 
-	//deploy
+	
 	stage("Deploy on Docker"){
 		steps {
-                	sh "docker run my-app"
+                	sh 'docker run my-app'
             	}
 
 		

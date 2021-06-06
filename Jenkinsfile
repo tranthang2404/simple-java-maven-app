@@ -51,12 +51,16 @@ pipeline {
 		}
 
 	
-	stage("Deploy on Docker"){
-		steps {
-                	sh 'docker run my-app'
-            	}
+		stage("Deploy on Docker"){
+			
+			agent {
+				docker {
+					image dockerImage
+					args '-p 8000:8000'
+				}
+			}
 
 		
-	}
+		}
     }
 }

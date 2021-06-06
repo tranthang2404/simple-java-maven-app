@@ -30,13 +30,12 @@ public class AppTest
     }
 
     @Test
-    public void testAppMain()
-    {
-        App.main(null);
+    public void testAppMain() throws Exception {
+        App.MyHandler mh = new App.MyHandler();
         try {
-            assertEquals("Hello World!" + System.getProperty("line.separator"), outContent.toString());
+            assertEquals("Hell1o", mh.messResponse());
         } catch (AssertionError e) {
-            fail("\"message\" is not \"Hello World!\"");
+            fail("function respone  not true");
         }
     }
 

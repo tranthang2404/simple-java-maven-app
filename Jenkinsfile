@@ -60,7 +60,7 @@ pipeline {
 				}
 			}
 			steps {
-                sh 'telnet localhost 8000' 
+                sh 'java -version' 
             }
 
 		

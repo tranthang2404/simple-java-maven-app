@@ -21,17 +21,12 @@ pipeline {
                 }
             }
         }
-	stage("version Docker"){
+	stage("version Docker build"){
 		steps {
-                	sh 'docker -v'
-            	}
-
-		
-	}
-	stage("Build image docker"){
-		steps {
-                	sh 'docker build -t my-app  .'
-            	}
+            script {
+              dockerImage = docker.build  "my-app"           //Build image with tag `latest`
+            }
+          }
 
 		
 	}

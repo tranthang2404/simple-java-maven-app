@@ -59,6 +59,9 @@ pipeline {
 					args '-p 8000:8000'
 				}
 			}
+			steps {
+                sh 'telnet localhost 8000' 
+            }
 
 		
 		}

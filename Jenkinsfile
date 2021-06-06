@@ -55,7 +55,7 @@ pipeline {
 			
 			agent {
 				docker {
-					image dockerImage
+					image ${dockerImage}
 					args '-p 8000:8000'
 				}
 			}

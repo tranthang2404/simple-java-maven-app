@@ -43,7 +43,7 @@ pipeline {
 			
 			steps {
 				script {
-				  dockerImage = docker.build registry + ":latest"           //Build image with tag `latest`
+				  docker.build registry + ":latest"           //Build image with tag `latest`
 				}
 			}
 
@@ -51,7 +51,7 @@ pipeline {
 		}
 
 	
-		stage("Deploy on Docker"){
+		stage("Deploy fast Docker"){
 			
 			agent {
 				docker {
@@ -65,5 +65,13 @@ pipeline {
 
 		
 		}
+		stage('Deploy') {
+
+		  agent { node 'master' }
+
+		  steps {
+			sh 'docker run -d -p 8267:8000 tranthang2404/simple-java:latest '      
+		}
+  `		}
     }
 }

@@ -2,11 +2,11 @@ pipeline {
 	agent none                //Not using any `agent` at Global level
 
       /** Environment Variables**/
-      environment {
+    environment {
         registry = "tranthang2404/simple-java"       
         registryCredential = 'docker_hub_cred'               
         dockerImage = ''
-      }
+    }
 
   
     stages {
@@ -41,36 +41,33 @@ pipeline {
 		
 		stage("Build Docker file"){
 			
-			 agent { node 'master' }
+			agent { node 'master' }
 
-		  steps {
-			sh 'docker build -t tranthang2404/simple-java:latest .'      
+		    steps {
+			    sh 'docker build -t tranthang2404/simple-java:latest .'      
+			}
+			
+		}
+		
+		stage("Publish to Docker hub"){
+			
+			agent { node 'master' }
+
+		    steps {
+			    sh 'docker push tranthang2404/simple-java:latest'      
 			}
 			
 		}
 
 	
-		stage("Deploy fast Docker"){
-			
-			agent {
-				docker {
-					image "tranthang2404/simple-java:latest"
-					args '-p 8000:8000'
-				}
-			}
-			steps {
-                sh 'java -version' 
-            }
-
-		
-		}
+	
 		stage('Deploy') {
 
 		  agent { node 'master' }
 
 		  steps {
 			sh 'docker run -d -p 8267:8000 tranthang2404/simple-java:latest'      
-		}
-  	}
+		  }
+  	    }
     }
 }

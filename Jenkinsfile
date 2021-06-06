@@ -61,21 +61,14 @@ pipeline {
 
 	
 	
-		stage('Deploy') {
-
-		  agent { node 'master' }
-
-		  steps {
-			sh 'docker run -d -p 8267:8000 tranthang2404/simple-java:latest'      
-		  }
-  	    }
 		
-		stage('Test Connect') {
+		
+		stage('Deploy on K8s') {
 
 		  agent { node 'node-k8s' }
 
 		  steps {
-			sh 'java -version'      
+			sh 'kubectl apply -f ~/k8s/simple-server-java.yaml'      
 		  }
   	    }
     }

@@ -39,14 +39,13 @@ pipeline {
         }
 		
 		
-		stage("version Docker build"){
+		stage("Build Docker file"){
 			
-			steps {
-				script {
-				  docker.build registry + ":latest"           //Build image with tag `latest`
-				}
-			}
+			 agent { node 'master' }
 
+		  steps {
+			sh 'docker build -t tranthang2404/simple-java:latest .'      
+			}
 			
 		}
 
@@ -70,7 +69,7 @@ pipeline {
 		  agent { node 'master' }
 
 		  steps {
-			sh 'docker run -d -p 8267:8000 tranthang2404/simple-java:latest '      
+			sh 'docker run -d -p 8267:8000 tranthang2404/simple-java:latest'      
 		}
   	}
     }

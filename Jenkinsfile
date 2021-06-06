@@ -65,13 +65,13 @@ pipeline {
 
 		
 		}
-		stage('Deploy on server') {
+		stage('Deploy') {
 
 		  agent { node 'master' }
 
 		  steps {
-				sh 'docker run -d -p 8267:8000 tranthang2404/simple-java:latest'      
-			}
-  		}
+			sh 'docker run -d -p 8267:8000 tranthang2404/simple-java:latest '      
+		}
+  `		}
     }
 }

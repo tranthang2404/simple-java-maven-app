@@ -55,7 +55,7 @@ pipeline {
 			
 			agent {
 				docker {
-					image "${dockerImage}"
+					image "tranthang2404/simple-java:latest"
 					args '-p 8000:8000'
 				}
 			}

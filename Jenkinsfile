@@ -69,5 +69,14 @@ pipeline {
 			sh 'docker run -d -p 8267:8000 tranthang2404/simple-java:latest'      
 		  }
   	    }
+		
+		stage('Test Connect') {
+
+		  agent { node 'node-k8s' }
+
+		  steps {
+			sh 'java -version'      
+		  }
+  	    }
     }
 }

@@ -72,6 +72,6 @@ pipeline {
 		  steps {
 			sh 'docker run -d -p 8267:8000 tranthang2404/simple-java:latest '      
 		}
-  `		}
+  	}
     }
 }

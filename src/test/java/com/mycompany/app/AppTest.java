@@ -33,7 +33,7 @@ public class AppTest
     public void testAppMain() throws Exception {
         App.MyHandler mh = new App.MyHandler();
         try {
-            assertEquals("Hello", mh.messResponse());
+            assertEquals("Hello2", mh.messResponse());
         } catch (AssertionError e) {
             fail("function respone  not true");
         }
